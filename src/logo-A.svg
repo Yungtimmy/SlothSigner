@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480"><rect width="1200" height="480" fill="#F4EFE4"/><g transform="translate(110,60) scale(1.8)"><g>
+<circle cx="100" cy="92" r="74" fill="#2F3B2A"/>
+<path d="M40 96 Q40 50 100 50 Q160 50 160 96 Q160 132 100 132 Q40 132 40 96Z" fill="#F4EFE4"/>
+<ellipse cx="76" cy="94" rx="13" ry="9" fill="#2F3B2A" transform="rotate(-15 76 94)"/>
+<ellipse cx="124" cy="94" rx="13" ry="9" fill="#2F3B2A" transform="rotate(15 124 94)"/>
+<circle cx="76" cy="92" r="21" fill="none" stroke="#2F3B2A" stroke-width="5"/>
+<circle cx="124" cy="92" r="21" fill="none" stroke="#2F3B2A" stroke-width="5"/>
+<path d="M97 88 Q100 84 103 88" fill="none" stroke="#2F3B2A" stroke-width="5"/>
+<circle cx="80" cy="95" r="4" fill="#F4EFE4"/><circle cx="120" cy="95" r="4" fill="#F4EFE4"/>
+<ellipse cx="100" cy="112" rx="7" ry="4.5" fill="#2F3B2A"/>
+<path d="M90 121 Q100 127 110 121" fill="none" stroke="#2F3B2A" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M66 140 H134 V192 L125.5 198 L117 192 L108.5 198 L100 192 L91.5 198 L83 192 L74.5 198 L66 192Z" fill="#F4EFE4" stroke="#2F3B2A" stroke-width="5" stroke-linejoin="round"/>
+<rect x="78" y="154" width="44" height="5" rx="2.5" fill="#2F3B2A"/>
+<rect x="78" y="166" width="30" height="5" rx="2.5" fill="#2F3B2A"/>
+<rect x="78" y="178" width="38" height="5" rx="2.5" fill="#2F3B2A"/>
+</g></g><text x="470" y="262" style="font-family:Fraunces,serif;font-size:124px;font-weight:600;letter-spacing:-2px" fill="#2F3B2A">SlothSigner</text><text x="474" y="320" style="font-family:Inter;font-size:30px;letter-spacing:1px" fill="#2F3B2A" opacity="1">read before you sign. slowly.</text></svg>
