@@ -30,10 +30,9 @@ export default function App() {
     setPhase("reading");
     const d = await decode(input);
     push(`✓ read selector ${d.selector}`);
-    push(d.source === "builtin" ? `✓ matched ${d.signature}` : d.source === "4byte" ? `✓ 4byte guess: ${d.signature}` : d.source === "empty" ? "✓ no calldata, plain transfer" : d.lookupFailed ? "· couldn't reach 4byte" : "· selector not recognised");
+    push(d.source === "builtin" ? `✓ matched ${d.signature}` : d.source === "4byte" ? `✓ 4byte guess: ${d.signature}` : d.source === "empty" ? "✓ no calldata, plain transfer" : d.lookupFailed ? "- couldn't reach 4byte" : "- selector not recognised");
     const a = assess(d);
     push(`✓ rules done: ${a.verdict}`);
-    // Rule-based verdict shows right away; Gemma's words are added when ready.
     setRes({ d, a, explanation: templateExplanation(d, a), by: "template" });
     setPhase("done");
     if (!useGemma) return;
@@ -53,9 +52,9 @@ export default function App() {
 
   return (
     <div className="page">
-      <header><span className="brand"><img src={sloth} alt="" className="logo" width={40} height={40} /><span className="wordmark">SlothSigner</span></span><span className="muted small">Gemma, in your browser · v0.1</span></header>
+      <header><span className="brand"><img src={sloth} alt="" className="logo" width={40} height={40} /><span className="wordmark">SlothSigner</span></span><span className="muted small">Gemma in your browser, v0.1</span></header>
       <h1>Read it slowly before you sign it.</h1>
-      <p className="muted">Paste a transaction, calldata or an approval. You get one plain sentence back.</p>
+      <p className="muted">Paste a transaction, calldata, or an approval.</p>
 
       <div className="samples">{SAMPLES.map((s) => <button key={s.label} className="chip" onClick={() => { setText(s.value); setPhase("idle"); setRes(null); }}>{s.label}</button>)}</div>
       <textarea className="paste mono" value={text} onChange={(e) => setText(e.target.value)} placeholder={'0x095ea7b3…  or  {"to": "0x…", "data": "0x…", "value": "0x0"}'} spellCheck={false} />
@@ -69,8 +68,8 @@ export default function App() {
       {phase === "reading" && (
         <section className="thinking">
           <img src={sloth} alt="" className="sloth" width={96} height={96} />
-          <h2 className="serif italic">Reading slowly…</h2>
-          <p className="muted small">Going through it line by line. Take a sip of something.</p>
+          <h2 className="serif italic">Reading slowly.</h2>
+          <p className="muted small">Checking the call.</p>
           <div className="dots" aria-hidden="true"><span /><span /><span /></div>
           <ul className="mono small">{log.map((l, i) => <li key={i}>{l}</li>)}</ul>
         </section>
@@ -82,9 +81,9 @@ export default function App() {
           <span className={`label ${res.a.verdict.toLowerCase()}`}>{res.a.verdict.toUpperCase()}</span>
           <p className="verdict serif"><Headline t={res.a.headline} /></p>
           <p className="explain">{res.explanation}</p>
-          {gemma.state === "writing" && <p className="small muted">Gemma is writing its explanation…</p>}
-          {gemma.state === "failed" && <p className="small muted">Gemma couldn't run here ({gemma.note}). This is the written explanation.</p>}
-          <ul className="flags small">{res.a.flags.map((f) => <li key={f.code} title={f.text}><span className={`dot ${f.level.toLowerCase()}`} />{f.level} · {flagName(f.code)}</li>)}</ul>
+          {gemma.state === "writing" && <p className="small muted">Gemma is writing the explanation.</p>}
+          {gemma.state === "failed" && <p className="small muted">Gemma couldn't run here ({gemma.note}). The explanation above is from the rules.</p>}
+          <ul className="flags small">{res.a.flags.map((f) => <li key={f.code} title={f.text}><span className={`dot ${f.level.toLowerCase()}`} />{f.level}: {flagName(f.code)}</li>)}</ul>
           <details>
             <summary>Details</summary>
             <dl className="mono small">
@@ -102,13 +101,13 @@ export default function App() {
       {res && phase === "done" && gemma.state === "loading" && (
         <section className="thinking download">
           <img src={sloth} alt="" className="sloth" width={96} height={96} />
-          <p className="serif italic big">Fetching Gemma once. Slowly, like everything here.</p>
+          <p className="serif italic big">Downloading Gemma. This happens once.</p>
           <div className="bar" role="progressbar" aria-valuenow={Math.round(gemma.progress * 100)} aria-valuemin={0} aria-valuemax={100}><div style={{ width: `${Math.round(gemma.progress * 100)}%` }} /></div>
           <p className="mono small">{gemma.mb.toFixed(0)} MB · {Math.round(gemma.progress * 100)}%</p>
           <p className="small muted">After this it's cached in your browser, so next time it starts straight away. The verdict above is already final.</p>
         </section>
       )}
-      <footer className="small muted"><span>Runs on your device. Nothing leaves your browser except the model download and a 4byte lookup.</span><span>Open source · Gemma via WebLLM</span></footer>
+      <footer className="small muted"><span>Runs on your device. Nothing leaves your browser except the model download and a 4byte lookup.</span><span>Open source. Gemma via WebLLM</span></footer>
     </div>
   );
 }

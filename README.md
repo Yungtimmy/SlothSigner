@@ -1,6 +1,6 @@
 # SlothSigner
 
-Read before you sign. Slowly.
+Read it slowly before you sign it.
 
 SlothSigner explains a wallet signature request in plain English before you approve it. Paste a transaction or a typed-data request, and it shows who you are giving access to, what they can move, and how much.
 
