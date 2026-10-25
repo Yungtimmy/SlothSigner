@@ -61,7 +61,7 @@ export default function App() {
       <textarea className="paste mono" value={text} onChange={(e) => setText(e.target.value)} placeholder={'0x095ea7b3…  or  {"to": "0x…", "data": "0x…", "value": "0x0"}'} spellCheck={false} />
       <div className="row">
         <button className="primary" onClick={run} disabled={phase === "reading"}>Explain this to me</button>
-        <label className="small muted"><input type="checkbox" checked={useGemma} onChange={(e) => setUseGemma(e.target.checked)} /> Use Gemma (downloads about 1.5 GB once)</label>
+        <label className="small muted"><input type="checkbox" checked={useGemma} onChange={(e) => setUseGemma(e.target.checked)} /> Use Gemma (small 1B model, downloads once)</label>
       </div>
       <p className="small muted">No wallet needed. Nothing gets signed here.</p>
       {err && <p className="err">{err}</p>}

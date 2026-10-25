@@ -1,7 +1,7 @@
 import type { Decoded } from "./decode";
 import type { Assessment } from "./rules";
 
-export const GEMMA_MODEL = "gemma-2-2b-it-q4f16_1-MLC";
+export const GEMMA_MODEL = "gemma3-1b-it-q4f16_1-MLC";
 
 const fmt = (v: unknown) => (typeof v === "bigint" ? v.toString() : String(v));
 
